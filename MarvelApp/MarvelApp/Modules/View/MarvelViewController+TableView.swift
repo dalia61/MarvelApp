@@ -13,24 +13,23 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
         marvelTableView.dataSource = self
         marvelTableView.delegate = self
         marvelTableView.registerCellNib(cellClass: MarvelTableViewCell.self)
-        marvelTableView.estimatedRowHeight = UITableView.automaticDimension
+        marvelTableView.estimatedRowHeight = 1000
         marvelTableView.rowHeight = UITableView.automaticDimension
-
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         marvelTableView.addSubview(refreshControl)
     }
-
+    
     @objc func refresh(_ sender: AnyObject) {
         viewModel.fetchData(isRefresh: true)
     }
-
+    
     func reloadTableView() {
         DispatchQueue.main.async {
             self.marvelTableView.reloadData()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MarvelTableViewCell = tableView.dequeue(for: indexPath)
         let serie = viewModel.marvel.value[indexPath.row]
@@ -52,9 +51,11 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
+        let scrollViewHeight = scrollView.bounds.height
         
-        if offsetY > contentHeight - scrollView.frame.size.height {
+        if offsetY > contentHeight - scrollViewHeight {
             if searchBar.text?.isEmpty ?? false {
+                IndicatorScroll.startAnimating()
                 viewModel.fetchData(isRefresh: false)
             }
         }

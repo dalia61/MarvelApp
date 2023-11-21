@@ -10,10 +10,12 @@ import UIKit
 class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDelegate{
     @IBOutlet weak var marvelTableView: UITableView!
     @IBOutlet weak var IndicatorTableView: UIActivityIndicatorView!
+    @IBOutlet weak var IndicatorScroll: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
 
     var viewModel: MarvelViewModel!
     let refreshControl = UIRefreshControl()
+    var firstLoad: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +47,12 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     func bindViewModel() {
         viewModel.isLoadingData.observe(on: self) { [weak self] isLoading in
             DispatchQueue.main.async {
-                if isLoading {
+                if isLoading && self?.firstLoad != true {
                     self?.IndicatorTableView.startAnimating()
+                    self?.firstLoad = false
                 } else {
                     self?.IndicatorTableView.stopAnimating()
+                    self?.IndicatorScroll.stopAnimating()
                 }
             }
         }
@@ -56,7 +60,7 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         viewModel.marvel.observe(on: self) { [weak self] marvelSeries in
             guard let self = self else { return }
             self.reloadTableView()
-            refreshControl.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
     }
 

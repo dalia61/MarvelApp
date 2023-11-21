@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarvelViewController" customModule="MarvelApp" customModuleProvider="target">
             <connections>
+                <outlet property="IndicatorScroll" destination="hxk-mE-2ed" id="fyx-ak-vlH"/>
                 <outlet property="IndicatorTableView" destination="yk5-RG-7MS" id="e40-SC-gwy"/>
                 <outlet property="marvelTableView" destination="XtK-ju-feL" id="n2I-wZ-RiP"/>
                 <outlet property="searchBar" destination="4UO-I2-c4b" id="Gsl-oe-JKn"/>
@@ -36,6 +37,9 @@
                         <outlet property="delegate" destination="-1" id="bFS-fd-Q04"/>
                     </connections>
                 </searchBar>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hxk-mE-2ed">
+                    <rect key="frame" x="186.66666666666666" y="798" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -43,9 +47,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XtK-ju-feL" secondAttribute="bottom" id="7BP-7e-hhh"/>
                 <constraint firstItem="4UO-I2-c4b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DqK-PE-KSt"/>
                 <constraint firstItem="yk5-RG-7MS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I5S-Ij-E0v"/>
+                <constraint firstItem="hxk-mE-2ed" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ify-Pf-uOj"/>
                 <constraint firstItem="yk5-RG-7MS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Sfl-h7-KCl"/>
                 <constraint firstItem="XtK-ju-feL" firstAttribute="top" secondItem="4UO-I2-c4b" secondAttribute="bottom" constant="20" id="XeL-ba-8Cs"/>
                 <constraint firstAttribute="trailing" secondItem="XtK-ju-feL" secondAttribute="trailing" id="aAW-1U-lvP"/>
+                <constraint firstItem="hxk-mE-2ed" firstAttribute="bottom" secondItem="XtK-ju-feL" secondAttribute="bottom" id="c2J-Tq-O5F"/>
                 <constraint firstItem="4UO-I2-c4b" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="eB2-AG-LR5"/>
                 <constraint firstItem="XtK-ju-feL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gAr-BY-WAp"/>
                 <constraint firstItem="4UO-I2-c4b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mGp-17-g3Q"/>
