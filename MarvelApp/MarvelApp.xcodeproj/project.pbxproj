@@ -199,12 +199,7 @@
 		2B36D1622B0BA72A0081B7AE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				2B36D1752B0BAA210081B7AE /* Coordinator */,
-				2B36D1742B0BAA0C0081B7AE /* Model */,
-				2B36D1732B0BA9FE0081B7AE /* Network */,
-				2B36D1722B0BA9F60081B7AE /* UseCase */,
-				2B36D1702B0BA9DB0081B7AE /* View */,
-				2B36D1712B0BA9E00081B7AE /* ViewModel */,
+				2BD82E9B2B0CAC1300596DC5 /* MarvelList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -320,6 +315,19 @@
 				2B36D1872B0BAFF00081B7AE /* MarvelCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2BD82E9B2B0CAC1300596DC5 /* MarvelList */ = {
+			isa = PBXGroup;
+			children = (
+				2B36D1752B0BAA210081B7AE /* Coordinator */,
+				2B36D1742B0BAA0C0081B7AE /* Model */,
+				2B36D1732B0BA9FE0081B7AE /* Network */,
+				2B36D1722B0BA9F60081B7AE /* UseCase */,
+				2B36D1702B0BA9DB0081B7AE /* View */,
+				2B36D1712B0BA9E00081B7AE /* ViewModel */,
+			);
+			path = MarvelList;
 			sourceTree = "<group>";
 		};
 		2BE6A7192B0BC3F30001AFE0 /* DataNetwork */ = {
