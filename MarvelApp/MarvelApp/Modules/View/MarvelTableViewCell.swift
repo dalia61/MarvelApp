@@ -32,7 +32,7 @@ class MarvelTableViewCell: UITableViewCell {
         MarvelName.text = "Name: \(viewModel.name ?? "")"
         MarvelRating.text = "Rate: \(viewModel.rating ?? "")"
         MarvelYear.text = "Year: \(viewModel.year ?? 0)"
-        DescriptionLabel.text = "Description: \(viewModel.description ?? "description ?? "")"
+        DescriptionLabel.text = "Description: \(viewModel.description ?? "")"
 
         var marvelLogo = "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg"
         var imageUrl = viewModel.image ?? marvelLogo
