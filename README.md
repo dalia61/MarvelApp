@@ -49,10 +49,19 @@ To set up and run the MarvelApp app, follow these steps:
 Here are some screenshots from the app:
 
 - **Launch Screen**
+  ![Simulator Screenshot - iPhone 14 Pro - 2023-11-21 at 11 20 58](https://github.com/dalia61/MarvelApp/assets/70582993/96971baf-346e-452c-96b3-1a27dbddb345)
   
 - **Marvel List**
+![Simulator Screenshot - iPhone 14 Pro - 2023-11-21 at 11 22 06](https://github.com/dalia61/MarvelApp/assets/70582993/f6bb1945-19a7-4209-ad6b-9ca214beb3e1)
+
+- **Marvel Expand Cell**
+  ![Simulator Screenshot - iPhone 14 Pro - 2023-11-21 at 11 22 01](https://github.com/dalia61/MarvelApp/assets/70582993/4bc01882-0814-4e3b-accc-c8377a5550d5)
+
+- **Marvel Search Result**
+  ![Simulator Screenshot - iPhone 14 Pro - 2023-11-21 at 11 22 19](https://github.com/dalia61/MarvelApp/assets/70582993/434058ab-dcb9-4e3c-87eb-2444ae60f76c)
 
 
+  
 ## App Structure
 
 The app follows a modular structure, divided into different components:
