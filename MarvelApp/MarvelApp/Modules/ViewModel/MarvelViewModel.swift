@@ -54,7 +54,6 @@ class MarvelViewModel {
     
     func fetchData(title: String) {
         var series: [Series] = []
-        
         if !title.isEmpty {
             series = useCase.search(title: title)
         } else {

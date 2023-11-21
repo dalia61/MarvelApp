@@ -55,11 +55,22 @@ class MarvelTableViewCell: UITableViewCell {
                 self?.LoaderView.isHidden = true
                 self?.ActiveIndicator.stopAnimating()
                 self?.DescriptionLabel.isHidden = false
-                self?.layoutIfNeeded()
-                self?.layoutSubviews()
             }
         }
         isExpanded = !isExpanded
         chevron.image = (isExpanded ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"))
+        layoutIfNeeded()
+        layoutSubviews()
+    }
+    func collapsed(_ tableView: UITableView, index: IndexPath) {
+        if let cell = tableView.cellForRow(at: index) as? MarvelTableViewCell {
+            cell.LoaderView.isHidden = true
+            cell.ActiveIndicator.stopAnimating()
+            cell.DescriptionLabel.isHidden = true
+            cell.isExpanded = false
+            cell.chevron.image = UIImage(systemName: "chevron.down")
+            cell.layoutIfNeeded()
+            cell.layoutSubviews()
+        }
     }
 }

@@ -8,12 +8,14 @@
 import Foundation
 import UIKit
 
+private var currentIndex: IndexPath?
 extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func configureTableView() {
         marvelTableView.dataSource = self
         marvelTableView.delegate = self
         marvelTableView.registerCellNib(cellClass: MarvelTableViewCell.self)
-        marvelTableView.estimatedRowHeight = 1000
+        marvelTableView.estimatedRowHeight = UITableView.automaticDimension
         marvelTableView.rowHeight = UITableView.automaticDimension
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -42,12 +44,22 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell: MarvelTableViewCell = tableView.cellForRow(at: indexPath) as! MarvelTableViewCell
-        cell.didPressed()
+        if currentIndex != nil && indexPath != currentIndex {
+            tableView.beginUpdates()
+            cell.collapsed(tableView, index: currentIndex!)
+            tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.endUpdates()
+        }
         tableView.beginUpdates()
+        cell.didPressed()
+        tableView.reloadRows(at: [indexPath], with: .none)
         tableView.endUpdates()
+        currentIndex = indexPath
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -61,3 +73,4 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
