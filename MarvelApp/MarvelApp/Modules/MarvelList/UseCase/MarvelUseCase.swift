@@ -9,7 +9,6 @@ import Foundation
 
 protocol MarvelUseCase {
     var series: [Series] { get set }
-
     func fetchSeries(response: @escaping (Result<[Series]?, NetworkError>) -> Void)
     func search(title: String) -> [Series]
     func refresh(response: @escaping (Result<[Series]?, NetworkError>) -> Void)

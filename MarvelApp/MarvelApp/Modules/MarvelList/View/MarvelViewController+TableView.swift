@@ -23,6 +23,7 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func refresh(_ sender: AnyObject) {
+        searchBar.text = ""
         viewModel.fetchData(isRefresh: true)
     }
     
@@ -38,28 +39,31 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: serie)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.marvel.value.count
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell: MarvelTableViewCell = tableView.cellForRow(at: indexPath) as! MarvelTableViewCell
-        if currentIndex != nil && indexPath != currentIndex {
-            tableView.beginUpdates()
-            cell.collapsed(tableView, index: currentIndex!)
-            tableView.reloadRows(at: [indexPath], with: .none)
-            tableView.endUpdates()
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? MarvelTableViewCell else { return }
+        if let currentIndex = currentIndex, currentIndex != indexPath {
+            if let previousCell = tableView.cellForRow(at: currentIndex) as? MarvelTableViewCell {
+                previousCell.updateCellUIForContraction()
+            }
         }
-        tableView.beginUpdates()
-        cell.didPressed()
-        tableView.reloadRows(at: [indexPath], with: .none)
-        tableView.endUpdates()
         currentIndex = indexPath
+        cell.toggleCellExpansion()
+        UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }, completion: nil)
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
