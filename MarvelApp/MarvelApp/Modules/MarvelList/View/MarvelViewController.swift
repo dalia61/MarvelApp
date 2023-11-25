@@ -12,11 +12,11 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     @IBOutlet weak var IndicatorTableView: UIActivityIndicatorView!
     @IBOutlet weak var IndicatorScroll: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
-
+    
     var viewModel: MarvelViewModel!
     let refreshControl = UIRefreshControl()
     var firstLoad: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -28,22 +28,24 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         setupNavigationBar()
         viewModel.fetchData(isRefresh: false)
     }
-
+    
     private func setupNavigationBar() {
         title = "Marvel"
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func searchBar(_ searchBar: UISearchBar, 
-                   textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.fetchData(title: searchText)
     }
-
-    func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
-        viewModel.fetchData(title: searchBar.text ?? "")
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            viewModel.fetchData(title: searchText)
+        }
+        searchBar.resignFirstResponder()
     }
-
+    
     func bindViewModel() {
         viewModel.isLoadingData.observe(on: self) { [weak self] isLoading in
             DispatchQueue.main.async {
@@ -63,5 +65,5 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
             self.refreshControl.endRefreshing()
         }
     }
-
+    
 }
