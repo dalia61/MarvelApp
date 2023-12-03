@@ -37,6 +37,7 @@ To set up and run the MarvelApp app, follow these steps:
 ## Used In The APP
 
 - SWIFT
+- UIKit
 - MVVM Architecture Pattern
 - Observer pattern
 - Coordinator Pattern For Handling Navigation
