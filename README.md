@@ -1,6 +1,6 @@
 # Marvel iOS App
 
-Welcome to the Marvel iOS application! This app is tailored to streamline your exploration of Marvel's cinematic universe. With a user-friendly single-screen interface, it simplifies the process of discovering and diving into the extensive collection of Marvel movies.
+Welcome to the Marvel iOS application! This app is tailored to streamline your exploration of Marvel's cinematic universe. With a user-friendly single-screen interface, it simplifies the process of discovering and diving into the extensive collection of Marvel series.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -30,6 +30,7 @@ To set up and run the MarvelApp app, follow these steps:
 ## Key Features
 
 * List of Series: Explore a curated list of Marvel Series.
+* infinite scroll: loads new series as the user scrolls down without any clear page separation
 * Search Functionality: Easily search for specific Series.
 * Movie Details: Dive into expanded details for each series.
 
