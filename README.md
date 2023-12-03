@@ -38,7 +38,7 @@ To set up and run the MarvelApp app, follow these steps:
 
 - SWIFT
 - MVVM Architecture Pattern
-- Observable
+- Observer pattern
 - Coordinator Pattern For Handling Navigation
 - UseCase Layer
 - Network Layer (Alamofire)
