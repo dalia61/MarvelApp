@@ -44,10 +44,6 @@ extension MarvelViewController: UITableViewDataSource, UITableViewDelegate {
         return viewModel.marvel.value.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let cell = tableView.cellForRow(at: indexPath) as? MarvelTableViewCell else { return }

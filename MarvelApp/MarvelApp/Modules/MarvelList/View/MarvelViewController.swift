@@ -62,6 +62,7 @@ class MarvelViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         viewModel.marvel.observe(on: self) { [weak self] marvelSeries in
             guard let self = self else { return }
             self.reloadTableView()
+            self.marvelTableView.reloadData()
             self.refreshControl.endRefreshing()
         }
     }
